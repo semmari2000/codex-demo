@@ -22,8 +22,9 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Plus Jakarta Sans", "Segoe UI", Arial, Helvetica, sans-serif;
   background: var(--surface);
+  text-rendering: geometricPrecision;
 }
 
 a {
@@ -168,6 +169,7 @@ h1 {
   font-size: clamp(3rem, 8vw, 6.6rem);
   line-height: 0.94;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .hero-text {
@@ -184,9 +186,14 @@ h1 {
   margin-top: 34px;
 }
 
+.hero-copy {
+  animation: fadeUp 780ms ease both;
+}
+
 .hero-panel {
   justify-self: end;
   width: min(100%, 430px);
+  animation: fadeUp 860ms 140ms ease both;
 }
 
 .phone-frame {
@@ -271,6 +278,7 @@ h1 {
   border-radius: 8px;
   background: var(--line);
   box-shadow: var(--shadow);
+  animation: fadeUp 760ms 260ms ease both;
 }
 
 .trust-strip div {
@@ -294,6 +302,9 @@ h1 {
 
 .section {
   padding: 96px 0;
+  animation: fadeUp 700ms ease both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 32%;
 }
 
 .intro {
@@ -309,6 +320,7 @@ h1 {
   font-size: clamp(2.1rem, 4vw, 4.2rem);
   line-height: 1.02;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .section-heading .eyebrow,
@@ -329,6 +341,21 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
+  animation: fadeUp 680ms ease both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 28%;
+}
+
+.service-card:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.service-card:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.service-card:nth-child(4) {
+  animation-delay: 240ms;
 }
 
 .service-icon {
@@ -386,6 +413,17 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
+  animation: fadeSlide 660ms ease both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+.workflow-step:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.workflow-step:nth-child(3) {
+  animation-delay: 180ms;
 }
 
 .workflow-step span {
@@ -417,6 +455,9 @@ h1 {
   color: #ffffff;
   font-style: normal;
   box-shadow: var(--shadow);
+  animation: fadeUp 700ms ease both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 34%;
 }
 
 .contact-card a {
@@ -439,6 +480,45 @@ h1 {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }
 
 @media (max-width: 920px) {
